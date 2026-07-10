@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galeria – Agência Exittus</title>
+<meta name="description" content="Registros e peças gráficas da Agência Exittus: crachás, placa, materiais de campanha e o dia a dia da operação.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --green-900: #2d4a08;
+    --green-700: #4F7214;
+    --green-600: #5d8418;
+    --green-500: #6d9a1c;
+    --green-300: #a8c85a;
+    --green-100: #e8f2d0;
+    --green-50:  #f4f9eb;
+    --ink-900: #0f1407;
+    --ink-800: #1c2410;
+    --ink-700: #232d15;
+    --ink-600: #3a4020;
+    --ink-400: #6b7355;
+    --ink-200: #b8bfa8;
+    --ink-100: #e2e6d8;
+    --ink-050: #f7f8f5;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Sora', sans-serif;
+    background: var(--ink-900);
+    color: var(--ink-050);
+    min-height: 100vh;
+  }
+
+  .bg-field {
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(circle at 85% 0%, rgba(168,200,90,0.14) 0%, rgba(168,200,90,0) 40%),
+      radial-gradient(circle at 0% 100%, rgba(93,132,24,0.16) 0%, rgba(93,132,24,0) 55%);
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  header {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 64px 24px 32px;
+    text-align: center;
+  }
+  .logo-mark {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: var(--green-700);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 18px;
+    font-weight: 800;
+    font-size: 22px;
+    box-shadow: 0 10px 26px rgba(0,0,0,0.4);
+  }
+  .badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 14px;
+    border-radius: 999px;
+    background: rgba(168,200,90,0.10);
+    border: 1px solid rgba(168,200,90,0.25);
+    color: var(--green-300);
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+  }
+  .badge::before {
+    content: "";
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--green-300);
+  }
+  header h1 {
+    font-size: clamp(28px, 4.5vw, 44px);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: 14px;
+  }
+  header h1 span { color: var(--green-300); }
+  header p {
+    color: var(--ink-200);
+    font-size: 16px;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .strip {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 1100px;
+    margin: 0 auto 8px;
+    padding: 0 24px;
+  }
+  .strip img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    opacity: 0.9;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
+    margin: 40px auto 0;
+    padding: 0 24px 90px;
+  }
+
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 48px 0 22px;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--green-300);
+  }
+  .section-title:first-child { margin-top: 0; }
+  .section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(to right, rgba(168,200,90,0.35), transparent);
+  }
+
+  .masonry {
+    columns: 280px 2;
+    column-gap: 18px;
+  }
+  .masonry figure {
+    break-inside: avoid;
+    margin: 0 0 18px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: var(--ink-800);
+    border: 1px solid rgba(232,242,208,0.08);
+    position: relative;
+  }
+  .masonry img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .masonry figure:hover img { transform: scale(1.035); }
+  .masonry figcaption {
+    padding: 16px 18px 20px;
+  }
+  .masonry figcaption strong {
+    display: block;
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .masonry figcaption p {
+    font-size: 13px;
+    color: var(--ink-200);
+    line-height: 1.6;
+  }
+  .tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    padding: 4px 11px;
+    border-radius: 999px;
+    font-size: 10.5px;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+    backdrop-filter: blur(4px);
+  }
+  .tag.registro { background: rgba(15,20,7,0.65); color: var(--green-300); border: 1px solid rgba(168,200,90,0.35); }
+  .tag.grafico  { background: rgba(168,200,90,0.85); color: var(--ink-900); }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 30px 24px 50px;
+    font-size: 12.5px;
+    color: var(--ink-400);
+  }
+
+  @media (max-width: 640px) {
+    .masonry { columns: 1; }
+  }
+</style>
+</head>
+<body>
+  <div class="bg-field"></div>
+
+  <header>
+    <div class="logo-mark">E</div>
+    <span class="badge">Bastidores &amp; Materiais</span>
+    <h1>Galeria <span>Exittus</span></h1>
+    <p>Registros do dia a dia da operação e peças gráficas criadas para a marca — do crachá ao card de campanha.</p>
+  </header>
+
+  <div class="strip">
+    <img src="../imagens/faixa-logo-1.png" alt="Faixa decorativa com o logo da Exittus repetido">
+  </div>
+
+  <main>
+    <div class="section-title">Registros &amp; Bastidores</div>
+    <div class="masonry">
+      <figure>
+        <span class="tag registro">Registro</span>
+        <img src="../imagens/placa-acrilico.jpg" alt="Placa em acrílico da Agência Exittus na porta da sala">
+        <figcaption>
+          <strong>A placa na porta</strong>
+          <p>Essa placa marcou o momento em que a Exittus deixou de existir só na tela e ganhou um endereço físico de verdade — pendurada na entrada da sala, em acrílico espelhado, com o convite "seja um parceiro" logo abaixo do nome. É o tipo de detalhe que só faz sentido depois de meses construindo tudo do zero: agora tem porta, tem sala, tem placa.</p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <span class="tag registro">Registro</span>
+        <img src="../imagens/notebook-cracha.jpg" alt="Notebook aberto no site da Exittus, com crachá e cordão sobre o teclado">
+        <figcaption>
+          <strong>Tudo junto, pela primeira vez</strong>
+          <p>Site no ar na tela, crachá impresso, cordão personalizado com o logo — três peças que nasceram em momentos separados e que, nessa foto, aparecem juntas pela primeira vez em cima da mesma mesa. É o retrato de uma identidade que saiu do Figma e virou objeto físico.</p>
+        </figcaption>
+      </figure>
+    </div>
+
+    <div class="section-title">Peças Gráficas</div>
+    <div class="masonry">
+      <figure>
+        <span class="tag grafico">Peça gráfica</span>
+        <img src="../imagens/card-analista-rh.png" alt="Card de apresentação do Analista de RH da Exittus">
+        <figcaption>
+          <strong>Card de equipe — Analista de RH</strong>
+          <p>Peça criada pra colocar rosto e cargo por trás do atendimento. Antes de uma pessoa falar com a Exittus pelo WhatsApp ou e-mail, esse card já apresenta quem está do outro lado da linha — pensado pra dar mais confiança logo no primeiro contato.</p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <span class="tag grafico">Peça gráfica</span>
+        <img src="../imagens/card-recrutamento-evoluiu.png" alt="Card de campanha: O recrutamento evoluiu, sua empresa também">
+        <figcaption>
+          <strong>"O recrutamento evoluiu"</strong>
+          <p>Card institucional feito pra reforçar o posicionamento da marca junto às empresas de Guaíba e região: recrutamento deixou de ser só currículo em papel — virou estratégia, dado e tecnologia. Peça pensada pra campanhas em redes sociais e WhatsApp.</p>
+        </figcaption>
+      </figure>
+
+      <figure>
+        <span class="tag grafico">Peça gráfica</span>
+        <img src="../imagens/card-contato-endereco.png" alt="Card com informações de contato e endereço da Exittus">
+        <figcaption>
+          <strong>Card de contato</strong>
+          <p>Telefones e o endereço da sede, na R. São José, Centro de Guaíba — formatado pra ficar fixado nos stories e no status do WhatsApp, sempre à mão de quem precisa chegar até a agência ou fazer uma ligação rápida.</p>
+        </figcaption>
+      </figure>
+    </div>
+  </main>
+
+  <div class="strip">
+    <img src="../imagens/faixa-logo-2.png" alt="Faixa decorativa com o logo da Exittus repetido">
+  </div>
+
+  <footer>© <span id="year"></span> Agência Exittus · Guaíba/RS</footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
