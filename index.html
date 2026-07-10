@@ -103,17 +103,41 @@
   }
   .hint a { color: var(--green-300); text-decoration: none; }
   .hint a:hover { text-decoration: underline; }
+  .nav-pills {
+    display: flex;
+    gap: 10px;
+    margin-top: 4px;
+  }
+  .nav-pills a {
+    padding: 8px 18px;
+    border-radius: 999px;
+    background: rgba(168,200,90,0.08);
+    border: 1px solid rgba(168,200,90,0.22);
+    color: var(--green-300);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background 0.15s ease, color 0.15s ease;
+  }
+  .nav-pills a:hover {
+    background: var(--green-700);
+    color: var(--ink-050);
+  }
 </style>
 </head>
 <body>
   <div class="bg-field"></div>
   <div class="wrap">
-    <a class="cover-frame" href="https://agenciaexittus.github.io/agenciaexittus/" aria-label="Acessar o site da Agência Exittus">
+    <a class="cover-frame" href="https://agenciaexittus.github.io/agenciaexittus/" aria-label="Acessar o site da Agência Exittus" target="_blank" rel="noopener">
       <img src="https://i.ibb.co/75Ffgrg/capa-exittus-1.png" alt="Agência Exittus — Conectando talentos ao futuro">
     </a>
     <div class="actions">
-      <a class="cta" href="https://agenciaexittus.github.io/agenciaexittus/">Acessar o site →</a>
-      <p class="hint">Você será redirecionado automaticamente em instantes, ou <a href="https://agenciaexittus.github.io/agenciaexittus/">clique aqui</a>.</p>
+      <a class="cta" href="https://agenciaexittus.github.io/agenciaexittus/" target="_blank" rel="noopener">Acessar o site →</a>
+      <p class="hint">Você será redirecionado automaticamente em instantes, ou <a href="https://agenciaexittus.github.io/agenciaexittus/" target="_blank" rel="noopener">clique aqui</a>.</p>
+      <div class="nav-pills">
+        <a href="galeria.html" target="_blank" rel="noopener">Galeria</a>
+        <a href="arquivos/redes.html" target="_blank" rel="noopener">Contatos &amp; Redes</a>
+      </div>
     </div>
   </div>
 </body>
